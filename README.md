@@ -1,4 +1,5 @@
 # e2e-web-app
+docs-check: test PR
 
 A small Node.js (Express) + PostgreSQL web app used as a target for end-to-end testing.
 
