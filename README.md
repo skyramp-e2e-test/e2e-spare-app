@@ -86,3 +86,4 @@ curl -s -X POST http://localhost:3000/api/items \
   -H 'Content-Type: application/json' -d '{"name":"First item"}'
 curl -s http://localhost:3000/api/items
 ```
+Edge case #2: PR on a newly added repo
