@@ -20,30 +20,19 @@ A small Node.js (Express) + PostgreSQL web app used as a target for end-to-end t
 
 On startup the app creates its tables and seeds a test user.
 
-## Required configuration
+## Configuration
 
-The app **refuses to start** unless `APP_SIGNING_SECRET` is set. It signs the session cookie with this value. The app never prints or logs the value.
-
-If the variable is missing:
-
-- `docker compose up` stops with `APP_SIGNING_SECRET must be set`.
-- When you run the app directly with Node, it exits with code 1 and prints `Startup error: Missing required environment variable APP_SIGNING_SECRET`.
+No configuration is needed. `APP_SIGNING_SECRET` is optional: the app signs the session cookie with it if it is set, and otherwise with a random key made at start (sessions then end when the app restarts). The app never prints or logs the value.
 
 ## Start the app
 
 Requires Docker with Compose v2.
 
 ```bash
-export APP_SIGNING_SECRET="$(openssl rand -hex 32)"
 docker compose up --build
 ```
 
-Or put the secret in a `.env` file next to `docker-compose.yml` (see `.env.example`; `.env` is gitignored):
-
-```bash
-echo "APP_SIGNING_SECRET=$(openssl rand -hex 32)" > .env
-docker compose up --build
-```
+To keep sessions across restarts, set `APP_SIGNING_SECRET` first, or put it in a `.env` file next to `docker-compose.yml` (see `.env.example`; `.env` is gitignored).
 
 Then open http://localhost:3000.
 
@@ -59,7 +48,6 @@ With a PostgreSQL instance reachable at `DATABASE_URL`:
 
 ```bash
 npm install
-APP_SIGNING_SECRET=dev-secret \
 DATABASE_URL=postgres://app:app@localhost:5432/app \
 npm start
 ```
