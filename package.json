@@ -5,6 +5,7 @@
   "description": "Small Express + PostgreSQL web app for end-to-end testing",
   "main": "src/server.js",
   "scripts": {
+    "build": "node scripts/build-pages.js",
     "start": "node src/server.js"
   },
   "engines": {
@@ -14,5 +15,8 @@
     "cookie-parser": "^1.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "html-validate": "^9.7.1"
   }
 }

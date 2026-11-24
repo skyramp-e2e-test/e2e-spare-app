@@ -64,6 +64,10 @@ DATABASE_URL=postgres://app:app@localhost:5432/app \
 npm start
 ```
 
+### Page build
+
+`npm run build` checks every page in `public/` with [html-validate](https://html-validate.org) (`.htmlvalidate.json`) and writes them to `dist/`. The Docker image runs it while building, so a page with an unclosed tag fails the build with the file and line, for example `public/items.html:16:4: error [close-order] Unclosed element '<div>'`. The image serves the pages from `dist/` (`PAGES_DIR=dist`); `npm start` without a build serves `public/`.
+
 ## Sign in with the test user
 
 The app seeds this user every time it starts:

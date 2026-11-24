@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "rules": {
+    "close-order": "error",
+    "close-attr": "error",
+    "no-dup-id": "error",
+    "element-name": "error"
+  }
+}

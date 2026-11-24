@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser');
 const { verifyPassword } = require('./passwords');
 
 const SESSION_COOKIE = 'session';
-const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+// Pages come from the page build (dist/) in the image; public/ when run straight from the source.
+const PUBLIC_DIR = path.join(__dirname, '..', process.env.PAGES_DIR || 'public');
 
 function createApp({ pool, signingSecret }) {
   const app = express();
