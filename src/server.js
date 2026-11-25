@@ -1,5 +1,7 @@
 'use strict';
 
+const { startMetrics } = require('./metrics');
+
 const { loadConfig } = require('./config');
 const { createPool, waitForDatabase, migrate, seedTestUser } = require('./db');
 const { createApp } = require('./app');
